@@ -575,7 +575,10 @@ class MyApp(App):
 							d=32
 				koi.append(d)
 			if len(koi)<16:
-				koi.extend([32]*(16-len(koi)))
+				if(".COD" in s):
+					koi.extend([0]*(16-len(koi)))   # баг или фича? при загрузке cod файлов нужно дополнять имя нулями
+				else:
+					koi.extend([32]*(16-len(koi)))
 			if len(koi)>16:
 				koi=koi[:16]
 			return koi
